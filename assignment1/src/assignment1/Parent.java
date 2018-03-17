@@ -1,23 +1,20 @@
 package assignment1;
 
-public class Parent extends Profile{
+public class Parent extends Friend {
 
 	Dependent _dependent;
-	
-	public Parent( String firstname, String famname, Dependent dependent) {
-		
-		this.setname(firstname);
-		this.setsurname(famname);
-		this._dependent=dependent;
+
+	public Parent(String firstname, String famname) {
+		super(firstname, famname);
 	}
-	
-	public String getDepname(){
+
+	public String getDepname() {
 		return _dependent.getname();
-		
+
 	}
-	
-	public String getDepfamname(){
+
+	public String getDepfamname() {
 		return _dependent.getsurname();
-		
+
 	}
 }

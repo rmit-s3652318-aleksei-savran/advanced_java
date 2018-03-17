@@ -8,3 +8,4 @@ public class Friend extends Profile {
 	}
 
 }
+ 
