@@ -29,7 +29,7 @@ public class Driver {
 				return p;
 			}
 		}
-		System.out.println("No profile with this name are found");
+		System.out.println("No profiles with this name are found");
 		return null;
 	}
 

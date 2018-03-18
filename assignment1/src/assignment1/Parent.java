@@ -18,3 +18,4 @@ public class Parent extends Friend {
 
 	}
 }
+
