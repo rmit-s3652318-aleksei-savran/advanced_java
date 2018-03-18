@@ -10,11 +10,11 @@ public class Profile {
 	protected Set<Profile> _friendlist = new HashSet<>();
 
 	public Profile(String firstname, String famname, String status) {
-		this._name= firstname;
-		this._surname= famname;
-		this._status=status;
+		this._name = firstname;
+		this._surname = famname;
+		this._status = status;
 	}
-	
+
 	public void setname(String firstname) {
 		_name = firstname;
 	}
@@ -47,9 +47,5 @@ public class Profile {
 		if (_friendlist.contains(profile)) {
 			_friendlist.remove(profile);
 		}
-	}
-
-	public static Profile getProfile() {
-		return getProfile();
 	}
 }
