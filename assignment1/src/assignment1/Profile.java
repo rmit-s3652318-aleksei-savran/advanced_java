@@ -7,8 +7,14 @@ public class Profile {
 	protected String _name;
 	protected String _surname;
 	protected String _status;
-	protected Set< Profile> _friendlist = new HashSet<>();
+	protected Set<Profile> _friendlist = new HashSet<>();
 
+	public Profile(String firstname, String famname, String status) {
+		this._name= firstname;
+		this._surname= famname;
+		this._status=status;
+	}
+	
 	public void setname(String firstname) {
 		_name = firstname;
 	}
@@ -31,9 +37,19 @@ public class Profile {
 
 	public Set<Profile> getfriendlist() {
 		return _friendlist;
-	}	
-	
-	public void addfriend (Profile profile) {
+	}
+
+	public void addfriend(Profile profile) {
 		_friendlist.add(profile);
+	}
+
+	public void removefriend(Profile profile) {
+		if (_friendlist.contains(profile)) {
+			_friendlist.remove(profile);
+		}
+	}
+
+	public static Profile getProfile() {
+		return getProfile();
 	}
 }
