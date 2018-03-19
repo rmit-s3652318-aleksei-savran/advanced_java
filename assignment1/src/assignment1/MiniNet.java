@@ -27,9 +27,9 @@ public class MiniNet {
             int input = Integer.parseInt(menu.readLine());
             
             if(input < 0 || input > 7) {
-                System.out.println("You have entered an invalid selection, please try again\r\n");
+                System.out.println("You have entered an invalid selection, please choose from the following options\r\n");
             } else if(input == 6) {
-                System.out.println("You have quit the program\r\n");
+                System.out.println("You have exited the program\r\n");
                 System.exit(1);
             } else {
                 System.out.println("You have entered " + input + "\r\n");
