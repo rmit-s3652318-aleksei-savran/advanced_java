@@ -8,8 +8,12 @@ public class Driver {
 	private Set<Profile> _profiles = new HashSet<>();
 
 	public Driver() {
-		_profiles.add(new Profile("Romina", "Sharifpour", "Working at Deloitte", 21));
-		_profiles.add(new Profile("Nicholas", "de Weerd", "Working at CrownBet", 35));
+		Profile prof1 = new Profile("Romina", "Sharifpour", "Working at Deloitte", 21);
+		Profile prof2 = new Profile("Nicholas", "de Weerd", "Working at CrownBet", 35);
+		AddFriend(prof1, prof2);
+		
+		_profiles.add(prof1);
+		_profiles.add(prof2);
 	}
 
 	public void createProfile(String firstname, String famname, String status, int age) {
@@ -62,9 +66,11 @@ public class Driver {
 	public String Diplayfriendlist(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
 		Set<Profile> _friendlist = profile.getfriendlist();
-		String friends = "";
+		String friends = "\r\nFriend list: \r\n************ \r\n";
+		
 		for (Profile p : _friendlist) {
-			friends += p.toString();
+						friends += p.getname();
+			friends +=p.getsurname();
 			friends += "\r\n";
 		}
 		return friends;
