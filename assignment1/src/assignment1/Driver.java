@@ -16,9 +16,11 @@ public class Driver {
 		_profiles.add(prof2);
 	}
 
-	public void createProfile(String firstname, String famname, String status, int age) {
+	public Profile createProfile(String firstname, String famname, String status, int age) {
 		Profile profile = new Profile(firstname, famname, status, age);
 		_profiles.add(profile);
+		return profile;
+		
 	}
 
 	public void AddFriend(Profile profile1, Profile profile2) {
@@ -58,6 +60,7 @@ public class Driver {
 		return _profiles;
 	}
 
+// <<<<<<< newBranch
 	public String DiplayProfile(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
 		return profile.toString();
@@ -74,6 +77,19 @@ public class Driver {
 			friends += "\r\n";
 		}
 		return friends;
+// =======
+
+// 	public Profile DiplayProfile(String name, String surname) {
+// 		Profile profile = searchProfile(name, surname);
+// 		Set<Profile> _friendlist=Profile.getfriendlist();
+		
+// 		return profile;
+// 	}
+	
+// 	public Profile Diplayfriendlist(String name, String surname) {
+// 		Profile profile = searchProfile(name, surname);
+// 		return profile;
+// >>>>>>> master
 	}
 
 }
