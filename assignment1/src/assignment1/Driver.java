@@ -12,9 +12,11 @@ public class Driver {
 		_profiles.add(new Profile("Nicholas", "de Weerd", "Working at CrownBet", 35));
 	}
 
-	public void createProfile(String firstname, String famname, String status, int age) {
+	public Profile createProfile(String firstname, String famname, String status, int age) {
 		Profile profile = new Profile(firstname, famname, status, age);
 		_profiles.add(profile);
+		return profile;
+		
 	}
 
 	public void AddFriend(Profile profile1, Profile profile2) {
@@ -42,16 +44,16 @@ public class Driver {
 	}
 
 
-	public String DiplayProfile(String name, String surname) {
+	public Profile DiplayProfile(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
-		Set<Profile> _friendlist=Profile.getfriendlist()
+		Set<Profile> _friendlist=Profile.getfriendlist();
 		
-		return profile.toString();
+		return profile;
 	}
 	
-	public String Diplayfriendlist(String name, String surname) {
+	public Profile Diplayfriendlist(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
-		return profile.toString();
+		return profile;
 	}
 
 }
