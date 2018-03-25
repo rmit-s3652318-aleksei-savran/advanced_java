@@ -1,13 +1,23 @@
 package assignment1;
 
-public class Dependent extends Friend {
-	Parent _parent1;
-	Parent _parent2;
+public class Dependent extends Profile {
+	Profile _parent1;
+	Profile _parent2;
+	int age;
 
-	public Dependent(String firstname, String famname, Parent MumParent, Parent DadParent)  {
-		super(firstname, famname);
+	public Dependent(String firstname, String famname, String status, int age, Profile MumParent, Profile DadParent) {
+		super(firstname, famname, status, age);
 		this._parent1 = MumParent;
-		this._parent2= DadParent;
+		this._parent2 = DadParent;
+
+		this._parent1.addfriend(this);
+		this._parent2.addfriend(this);
+	}
+
+	public void addfriend(Dependent dependent) {
+		if (dependent.getage() < 16) {
+			_friendlist.add(dependent);
+		}
 	}
 
 	public String getMumname() {
@@ -18,7 +28,7 @@ public class Dependent extends Friend {
 	public String getMumfamname() {
 		return _parent1.getsurname();
 	}
-	
+
 	public String getDadname() {
 		return _parent2.getname();
 
