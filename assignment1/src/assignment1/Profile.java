@@ -9,9 +9,9 @@ public class Profile {
 	protected String _status;
 	protected int _age;
 //<<<<<<< newBranch
-	protected Set<Profile> _friendlist = new HashSet<>();
+	protected static Set<Profile> _friendlist = new HashSet<>();
 	protected Set<Dependent> _dependents = new HashSet<>();
-=======
+//=======
 	//protected static Set<Profile> _friendlist = new HashSet<>();
 //>>>>>>> master
 

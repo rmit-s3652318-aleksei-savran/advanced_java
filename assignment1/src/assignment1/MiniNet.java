@@ -83,7 +83,7 @@ public class MiniNet {
 //<<<<<<< newBranch
 				profile = driver.searchProfile(firstname, familyname);
 				 if (profile != null) {
-=======
+//=======
 			//	profile = driver.DiplayProfile(firstname, familyname);
 
 				//if (profile != null) {

@@ -1,6 +1,6 @@
 package assignment1;
 
-public class Parent extends Friend {
+public class Parent extends Profile {
 
 	Dependent _dependent;
 
