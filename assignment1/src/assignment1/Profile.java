@@ -8,14 +8,23 @@ public class Profile {
 	protected String _surname;
 	protected String _status;
 	protected int _age;
-	protected Set<Profile> _friendlist = new HashSet<>();
+//<<<<<<< newBranch
+	protected static Set<Profile> _friendlist = new HashSet<>();
 	protected Set<Dependent> _dependents = new HashSet<>();
+//=======
+	//protected static Set<Profile> _friendlist = new HashSet<>();
+//>>>>>>> master
 
 	public Profile(String firstname, String famname, String status, int age) {
 		this._name = firstname;
 		this._surname = famname;
 		this._status = status;
 		this._age = age;
+	}
+	
+	public Profile(String firstname, String famname) {
+		this._name = firstname;
+		this._surname = famname;
 	}
 
 	public void setname(String firstname) {
@@ -42,7 +51,7 @@ public class Profile {
 		return _age;
 	}
 
-	public Set<Profile> getfriendlist() {
+	public static Set<Profile> getfriendlist() {
 		return _friendlist;
 	}
 
