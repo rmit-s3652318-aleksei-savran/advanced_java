@@ -59,7 +59,7 @@ public class Profile {
 		String profileString = "";
 		profileString += _name + " ";
 		profileString += _surname + " - ";
-		profileString += _age + " - ";
+		profileString += _age + "/r/n";
 		profileString += _status;
 		return profileString;
 	}

@@ -10,7 +10,6 @@ public class MiniNet {
 	public static void main(String[] args) {
 		System.out.println("        MiniNet Menu           ");
 		System.out.println("*******************************");
-		System.out.println("*******************************");
 		System.out.print(" Please select an option from 1-8\r\n");
 		System.out.println("");
 		System.out.println("1. List all the members' profiles");
@@ -58,7 +57,6 @@ public class MiniNet {
 				} else {
 					System.out.println("Profile doesn't exist");
 				}
-
 				break;
 
 			case 3:
@@ -72,7 +70,6 @@ public class MiniNet {
 
 				if (profile != null) {
 					System.out.println(profile.toString());
-					System.out.println
 				} else {
 					System.out.println("Profile doesn't exist");
 				}
