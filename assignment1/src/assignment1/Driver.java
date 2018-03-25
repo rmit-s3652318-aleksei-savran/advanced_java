@@ -1,5 +1,5 @@
 package assignment1;
-
+import java.math.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,8 +8,12 @@ public class Driver {
 	private Set<Profile> _profiles = new HashSet<>();
 
 	public Driver() {
-		_profiles.add(new Profile("Romina", "Sharifpour", "Working at Deloitte", 21));
-		_profiles.add(new Profile("Nicholas", "de Weerd", "Working at CrownBet", 35));
+		Profile prof1 = new Profile("Romina", "Sharifpour", "Working at Deloitte", 21);
+		Profile prof2 = new Profile("Nicholas", "de Weerd", "Working at CrownBet", 35);
+		AddFriend(prof1, prof2);
+		
+		_profiles.add(prof1);
+		_profiles.add(prof2);
 	}
 
 	public Profile createProfile(String firstname, String famname, String status, int age) {
@@ -22,6 +26,19 @@ public class Driver {
 	public void AddFriend(Profile profile1, Profile profile2) {
 		profile1.addfriend(profile2);
 		profile2.addfriend(profile1);
+	}
+
+	public void AddDependentFriend(Dependent dependent1, Dependent dependent2) {
+		int agediff = Math.abs(dependent1.getage() - dependent2.getage());
+		if (agediff >= 3) {
+			dependent1.addfriend(dependent2);
+			dependent2.addfriend(dependent1);
+		} else {
+			System.out.println("You are not allowed to add a friend more than 3 years older than yourself");
+		}
+	}
+
+	{
 
 	}
 
@@ -43,17 +60,36 @@ public class Driver {
 		return _profiles;
 	}
 
-
-	public Profile DiplayProfile(String name, String surname) {
+// <<<<<<< newBranch
+	public String DiplayProfile(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
-		Set<Profile> _friendlist=Profile.getfriendlist();
-		
-		return profile;
+		return profile.toString();
 	}
-	
-	public Profile Diplayfriendlist(String name, String surname) {
+
+	public String Diplayfriendlist(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
-		return profile;
+		Set<Profile> _friendlist = profile.getfriendlist();
+		String friends = "\r\nFriend list: \r\n************ \r\n";
+		
+		for (Profile p : _friendlist) {
+						friends += p.getname();
+			friends +=p.getsurname();
+			friends += "\r\n";
+		}
+		return friends;
+// =======
+
+// 	public Profile DiplayProfile(String name, String surname) {
+// 		Profile profile = searchProfile(name, surname);
+// 		Set<Profile> _friendlist=Profile.getfriendlist();
+		
+// 		return profile;
+// 	}
+	
+// 	public Profile Diplayfriendlist(String name, String surname) {
+// 		Profile profile = searchProfile(name, surname);
+// 		return profile;
+// >>>>>>> master
 	}
 
 }

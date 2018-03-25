@@ -77,14 +77,20 @@ public class MiniNet {
 			case 3:
 				System.out.println("Enter the first name:");
 				firstname = menu.readLine();
-
 				System.out.println("Enter the surname:");
 				familyname = menu.readLine();
 
-				profile = driver.DiplayProfile(firstname, familyname);
+//<<<<<<< newBranch
+				profile = driver.searchProfile(firstname, familyname);
+				 if (profile != null) {
+=======
+			//	profile = driver.DiplayProfile(firstname, familyname);
 
-				if (profile != null) {
+				//if (profile != null) {
+//>>>>>>> master
 					System.out.println(profile.toString());
+				String friendlist=driver.Diplayfriendlist(firstname, familyname);
+					System.out.println(friendlist);
 				} else {
 					System.out.println("Profile doesn't exist");
 				}
