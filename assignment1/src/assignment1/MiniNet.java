@@ -35,7 +35,7 @@ public class MiniNet {
                 System.out.println("You have entered " + input + "\r\n");
             }
         } catch (IOException ioe) {
-            System.out.println("IO error trying to read your input!\r\n");
+            System.out.println("IO error trying to read your input!\r\n");/error
             System.exit(1);
         }
     }
