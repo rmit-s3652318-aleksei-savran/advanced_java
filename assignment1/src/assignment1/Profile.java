@@ -9,6 +9,7 @@ public class Profile {
 	protected String _status;
 	protected int _age;
 	protected Set<Profile> _friendlist = new HashSet<>();
+	protected Set<Dependent> _dependents = new HashSet<>();
 
 	public Profile(String firstname, String famname, String status, int age) {
 		this._name = firstname;
@@ -47,6 +48,15 @@ public class Profile {
 
 	public void addfriend(Profile profile) {
 		_friendlist.add(profile);
+	}
+
+	public boolean hasDependent() {
+		for (Profile friend : _friendlist) {
+			if (friend instanceof Dependent) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void removefriend(Profile profile) {
