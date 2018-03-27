@@ -10,10 +10,13 @@ public class Driver {
 	public Driver() {
 		Profile prof1 = new Profile("Romina", "Sharifpour", "Working at Deloitte", 21);
 		Profile prof2 = new Profile("Nicholas", "de Weerd", "Working at CrownBet", 35);
+		Profile prof3 = new Profile("Jhon", "Smith", "<3", 29);
 		AddFriend(prof1, prof2);
+		AddFriend(prof3, prof1);
 		
 		_profiles.add(prof1);
 		_profiles.add(prof2);
+		_profiles.add(prof3);
 	}
 
 	public Profile createProfile(String firstname, String famname, String status, int age) {
@@ -26,6 +29,9 @@ public class Driver {
 	public void AddFriend(Profile profile1, Profile profile2) {
 		profile1.addfriend(profile2);
 		profile2.addfriend(profile1);
+				
+		
+		
 	}
 
 	public void AddDependentFriend(Dependent dependent1, Dependent dependent2) {
@@ -60,7 +66,7 @@ public class Driver {
 		return _profiles;
 	}
 
-// <<<<<<< newBranch
+
 	public String DiplayProfile(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
 		return profile.toString();
@@ -74,22 +80,10 @@ public class Driver {
 		for (Profile p : _friendlist) {
 						friends += p.getname();
 			friends +=p.getsurname();
-			friends += "\r\n";
+			friends += " \r\n ";
 		}
 		return friends;
-// =======
 
-// 	public Profile DiplayProfile(String name, String surname) {
-// 		Profile profile = searchProfile(name, surname);
-// 		Set<Profile> _friendlist=Profile.getfriendlist();
-		
-// 		return profile;
-// 	}
-	
-// 	public Profile Diplayfriendlist(String name, String surname) {
-// 		Profile profile = searchProfile(name, surname);
-// 		return profile;
-// >>>>>>> master
 	}
 
 }
