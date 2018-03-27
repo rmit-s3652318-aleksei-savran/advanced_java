@@ -7,6 +7,14 @@ import java.io.BufferedReader;
 
 public class MiniNet {
 	public static void main(String[] args) {
+		Boolean showMenu = true;
+		while (showMenu) {
+			showMenu = createMenu();
+		}
+	}
+
+	private static Boolean createMenu() {
+		System.out.println();
 		System.out.println("        MiniNet Menu           ");
 		System.out.println("*******************************");
 		System.out.print(" Please select an option from 1-8\r\n");
@@ -18,7 +26,9 @@ public class MiniNet {
 		System.out.println("5. Add a friend");
 		System.out.println("6. Remove a friend");
 		System.out.println("7. Exit the menu");
-
+		System.out.println();
+		System.out.println();
+		
 		// creating the menu
 		BufferedReader menu = new BufferedReader(new InputStreamReader(System.in));
 
@@ -106,7 +116,7 @@ public class MiniNet {
 				Boolean isConnected = driver.areProfilesConnected(profile, profile2);
 
 				System.out.println(profile.getname() + " and " + profile2.getname() + " are"
-													+ (isConnected ? "" : " not") + " connected");
+						+ (isConnected ? "" : " not") + " connected");
 				break;
 
 			case 5:
@@ -129,8 +139,8 @@ public class MiniNet {
 					driver.AddFriend(profile, profile2);
 					friendlist = driver.Diplayfriendlist(firstname1, familyname1);
 					System.out.println(friendlist);
-					System.out
-							.println(profile.getname() + " and " + profile2.getname() + " are friends now, congratz!");
+					System.out.println(
+							profile.getname() + " and " + profile2.getname() + " are friends now, congratz!");
 				} else {
 					System.out.println("input error");
 				}
@@ -156,7 +166,8 @@ public class MiniNet {
 				if (profile != null && profile2 != null && profile.getfriendlist().contains(profile2)) {
 					profile.removefriend(profile);
 					profile = driver.searchProfile(firstname1, familyname1);
-					System.out.println(profile.getname() + " and " + profile2.getname() + " are not friends now, T_T");
+					System.out.println(
+							profile.getname() + " and " + profile2.getname() + " are not friends now, T_T");
 				} else {
 					System.out.println("Such profile doesn't exist in your friend list");
 				}
@@ -164,11 +175,10 @@ public class MiniNet {
 
 			case 7:
 				System.out.println("You have exited the program\r\n");
-				System.exit(1);
-				break;
+				return false;
 			default:
-				System.out
-						.println("You have entered an invalid selection, please choose from the following options\r\n");
+				System.out.println(
+						"You have entered an invalid selection, please choose from the following options\r\n");
 				break;
 			}
 
@@ -176,6 +186,6 @@ public class MiniNet {
 			System.out.println("IO error trying to read your input!\r\n");
 			System.exit(1);
 		}
+		return true;
 	}
-
 }
