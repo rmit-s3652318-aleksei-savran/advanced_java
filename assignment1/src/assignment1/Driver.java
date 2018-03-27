@@ -1,4 +1,5 @@
 package assignment1;
+
 import java.math.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +14,8 @@ public class Driver {
 		Profile prof3 = new Profile("Jhon", "Smith", "<3", 29);
 		AddFriend(prof1, prof2);
 		AddFriend(prof3, prof1);
-		
+		AddFriend(prof1, prof2);
+
 		_profiles.add(prof1);
 		_profiles.add(prof2);
 		_profiles.add(prof3);
@@ -23,15 +25,11 @@ public class Driver {
 		Profile profile = new Profile(firstname, famname, status, age);
 		_profiles.add(profile);
 		return profile;
-		
 	}
 
 	public void AddFriend(Profile profile1, Profile profile2) {
 		profile1.addfriend(profile2);
 		profile2.addfriend(profile1);
-				
-		
-		
 	}
 
 	public void AddDependentFriend(Dependent dependent1, Dependent dependent2) {
@@ -42,10 +40,6 @@ public class Driver {
 		} else {
 			System.out.println("You are not allowed to add a friend more than 3 years older than yourself");
 		}
-	}
-
-	{
-
 	}
 
 	public void RemoveFriend(Profile profile1, Profile profile2) {
@@ -62,10 +56,14 @@ public class Driver {
 		return null;
 	}
 
+	public void showRelatives(String name, String surname) {
+		Profile profile = searchProfile(name, surname);
+		Set<Profile> relatives = profile.getRelatives();
+	}
+
 	public Set<Profile> listMembers() {
 		return _profiles;
 	}
-
 
 	public String DiplayProfile(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
@@ -75,15 +73,18 @@ public class Driver {
 	public String Diplayfriendlist(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
 		Set<Profile> _friendlist = profile.getfriendlist();
-		String friends = "\r\nFriend list: \r\n************ \r\n";
-		
-		for (Profile p : _friendlist) {
-						friends += p.getname();
-			friends +=p.getsurname();
-			friends += " \r\n ";
+
+		if (_friendlist.isEmpty()) {
+			return "";
+		} else {
+			String friends = "\r\nFriend list: \r\n************ \r\n";
+
+			for (Profile p : _friendlist) {
+				friends += p.getname();
+				friends += p.getsurname();
+				friends += "\r\n";
+			}
+			return friends;
 		}
-		return friends;
-
 	}
-
 }

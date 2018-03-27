@@ -8,9 +8,9 @@ public class Profile {
 	protected String _surname;
 	protected String _status;
 	protected int _age;
-	protected static Set<Profile> _friendlist = new HashSet<>();
+	protected Set<Profile> _friendlist = new HashSet<>();
 	protected Set<Dependent> _dependents = new HashSet<>();
-	
+
 	public Profile(String firstname, String famname, String status, int age) {
 		this._name = firstname;
 		this._surname = famname;
@@ -23,8 +23,8 @@ public class Profile {
 		this._surname = famname;
 	}
 
-	public static void set_friendlist(Set<Profile> _friendlist) {
-		Profile._friendlist = _friendlist;
+	public void setFriendlist(Set<Profile> friendlist) {
+		_friendlist = friendlist;
 	}
 
 	public void setname(String firstname) {
@@ -51,7 +51,7 @@ public class Profile {
 		return _age;
 	}
 
-	public static Set<Profile> getfriendlist() {
+	public Set<Profile> getfriendlist() {
 		return _friendlist;
 	}
 
@@ -59,13 +59,14 @@ public class Profile {
 		_friendlist.add(profile);
 	}
 
-	public boolean hasDependent() {
+	public Set<Profile> getRelatives() {
+		Set<Profile> dependents = new HashSet<>();
 		for (Profile friend : _friendlist) {
 			if (friend instanceof Dependent) {
-				return true;
+				dependents.add((Dependent)friend);
 			}
 		}
-		return false;
+		return dependents;
 	}
 
 	public void removefriend(Profile profile) {
@@ -78,7 +79,7 @@ public class Profile {
 		String profileString = "";
 		profileString += _name + " ";
 		profileString += _surname + " - ";
-		profileString += _age + "/r/n";
+		profileString += _age + " - ";
 		profileString += _status;
 		return profileString;
 	}

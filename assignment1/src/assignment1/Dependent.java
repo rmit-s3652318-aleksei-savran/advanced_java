@@ -1,5 +1,8 @@
 package assignment1;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Dependent extends Profile {
 	Profile _parent1;
 	Profile _parent2;
@@ -18,6 +21,13 @@ public class Dependent extends Profile {
 		if (dependent.getage() < 16) {
 			_friendlist.add(dependent);
 		}
+	}
+
+	public Set<Profile> getRelatives() {
+		Set<Profile> parents = new HashSet<>();
+		parents.add(_parent1);
+		parents.add(_parent2);
+		return parents;
 	}
 
 	public String getMumname() {
