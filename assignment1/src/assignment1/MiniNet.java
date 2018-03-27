@@ -31,6 +31,8 @@ public class MiniNet {
 
 			Set<Profile> profiles;
 			Profile profile = null;
+			Profile profile2 = null;
+
 			String firstname;
 			String familyname;
 			String firstname1;
@@ -40,9 +42,7 @@ public class MiniNet {
 			String status;
 			int age;
 
-			Profile profile2;
 			switch (input) {
-
 			case 1: //// listing all the profiles
 				profiles = driver.listMembers();
 				for (Profile p : profiles) {
@@ -89,7 +89,24 @@ public class MiniNet {
 				break;
 
 			case 4:
+				System.out.println("Enter the first name");
+				firstname1 = menu.readLine();
 
+				System.out.println("Enter the surname");
+				familyname1 = menu.readLine();
+				profile = driver.searchProfile(firstname1, familyname1);
+
+				System.out.println("Enter the first name of a friend");
+				firstname2 = menu.readLine();
+
+				System.out.println("Enter the surname of a friend");
+				familyname2 = menu.readLine();
+				profile2 = driver.searchProfile(firstname2, familyname2);
+
+				Boolean isConnected = driver.areProfilesConnected(profile, profile2);
+
+				System.out.println(profile.getname() + " and " + profile2.getname() + " are"
+													+ (isConnected ? "" : " not") + " connected");
 				break;
 
 			case 5:

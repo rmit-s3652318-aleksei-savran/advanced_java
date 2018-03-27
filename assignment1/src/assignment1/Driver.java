@@ -14,7 +14,6 @@ public class Driver {
 		Profile prof3 = new Profile("Jhon", "Smith", "<3", 29);
 		AddFriend(prof1, prof2);
 		AddFriend(prof3, prof1);
-		AddFriend(prof1, prof2);
 
 		_profiles.add(prof1);
 		_profiles.add(prof2);
@@ -59,6 +58,10 @@ public class Driver {
 	public void showRelatives(String name, String surname) {
 		Profile profile = searchProfile(name, surname);
 		Set<Profile> relatives = profile.getRelatives();
+	}
+
+	public Boolean areProfilesConnected(Profile profile1, Profile profile2) {		
+		return profile1.getfriendlist().contains(profile2);
 	}
 
 	public Set<Profile> listMembers() {
