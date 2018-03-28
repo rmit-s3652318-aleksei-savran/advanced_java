@@ -1,7 +1,10 @@
 package assignment1;
 
+////Author: Aleksey Savran
 import java.util.HashSet;
 import java.util.Set;
+
+////Dependent class inherits the profile and is used specifically for child objects
 
 public class Dependent extends Profile {
 	Profile _parent1;
@@ -13,15 +16,24 @@ public class Dependent extends Profile {
 		this._parent1 = MumParent;
 		this._parent2 = DadParent;
 
-		this._parent1.addfriend(this);
-		this._parent2.addfriend(this);
+		this._parent1.addfriend(this, true);
+		this._parent2.addfriend(this, true);
 	}
 
-	public Boolean addfriend(Profile profile) {
+	//// overriding addfreind method from profile class in here
+	@Override
+	public Boolean addfriend(Profile profile, Boolean isRelative) {
+		if (isRelative) {
+			_friendlist.add(profile);
+			return true;
+		}
+
 		if (profile.getage() <= 2 && this.getage() <= 2) {
 			System.out.println("Younger than two year old, can not have any friend");
 			return false;
 		}
+
+		/// to maintain the age difference condition
 
 		int agediff = Math.abs(this.getage() - profile.getage());
 		if (profile.getage() < 16 && agediff > 3) {
@@ -32,6 +44,8 @@ public class Dependent extends Profile {
 		}
 		return true;
 	}
+
+	/// a set to maintain the list of parents of a dependent
 
 	public Set<Profile> getRelatives() {
 		Set<Profile> parents = new HashSet<>();

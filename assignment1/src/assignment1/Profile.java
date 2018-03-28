@@ -1,8 +1,10 @@
+////Author: Romina Sharifpour
 package assignment1;
 
 import java.util.HashSet;
 import java.util.Set;
 
+///Profile class represent the profile of all adults and superclass for other profile types such as dependents
 public class Profile {
 	protected String _name;
 	protected String _surname;
@@ -18,6 +20,9 @@ public class Profile {
 		this._age = age;
 	}
 
+	//// getters and setters
+
+	/// this is to represent Adult profiles (overloading)
 	public Profile(String firstname, String famname) {
 		this._name = firstname;
 		this._surname = famname;
@@ -51,12 +56,14 @@ public class Profile {
 		return _age;
 	}
 
+	/// we'll use a set to keep the track of friendlists
 	public Set<Profile> getfriendlist() {
 		return _friendlist;
 	}
 
-	public Boolean addfriend(Profile profile) {
-		if (!(profile instanceof Dependent)) {
+	/// add friend method, and to avoid child and adult connecting
+	public Boolean addfriend(Profile profile, Boolean isRelative) {
+		if (isRelative || !(profile instanceof Dependent)) {
 			_friendlist.add(profile);
 		} else {
 			System.out.println("An Adult is not allowed to add a Child");
@@ -65,6 +72,8 @@ public class Profile {
 		return true;
 	}
 
+	/// dependent and parent relationships, we're using a set to maintain the
+	/// dependents of a profile
 	public Set<Profile> getRelatives() {
 		Set<Profile> dependents = new HashSet<>();
 		for (Profile friend : _friendlist) {
