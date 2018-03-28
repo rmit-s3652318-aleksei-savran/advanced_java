@@ -1,3 +1,4 @@
+////Author: Romina Sharifpour
 package assignment1;
 
 import java.io.IOException;
@@ -5,10 +6,12 @@ import java.io.InputStreamReader;
 import java.util.Set;
 import java.io.BufferedReader;
 
+////setting up the menu and all the options
 public class MiniNet {
 	public static void main(String[] args) {
 		Boolean showMenu = true;
 		Driver driver = new Driver();
+		
 		while (showMenu) {
 			showMenu = createMenu(driver);
 		}
@@ -18,7 +21,7 @@ public class MiniNet {
 		System.out.println();
 		System.out.println("        MiniNet Menu           ");
 		System.out.println("*******************************");
-		System.out.print(" Please select an option from 1-8\r\n");
+		System.out.print(" Please select an option from 0-8\r\n");
 		System.out.println("");
 		System.out.println("0. Add a profile to the network");
 		System.out.println("1. List all the profiles");
@@ -100,6 +103,7 @@ public class MiniNet {
 					System.out.println("This profile already exists");
 				}
 				break;
+
 			case 1: //// listing all the profiles
 				profiles = driver.listMembers();
 				for (Profile p : profiles) {
@@ -107,7 +111,7 @@ public class MiniNet {
 				}
 				break;
 
-			case 2:
+			case 2: ////Looking up a person in the network
 				System.out.println("Enter the first name:");
 				firstname = menu.readLine();
 
@@ -117,13 +121,15 @@ public class MiniNet {
 				profile = driver.searchProfile(firstname, familyname);
 
 				if (profile != null) {
+					System.out.println( " ");
 					System.out.println(profile.getname() + " " + profile.getsurname());
 				} else {
+					System.out.println( " ");
 					System.out.println("Profile doesn't exist");
 				}
 				break;
 
-			case 3:
+			case 3://///viewing a persons profile
 				System.out.println("Enter the first name:");
 				firstname = menu.readLine();
 				System.out.println("Enter the surname:");
@@ -131,21 +137,24 @@ public class MiniNet {
 				String friendlist = "";
 				profile = driver.searchProfile(firstname, familyname);
 				if (profile != null) {
+					System.out.println( " ");
 					System.out.println(profile.toString());
 					friendlist = driver.Diplayfriendlist(firstname, familyname);
 
 					if (!friendlist.equals("")) {
 						System.out.println(friendlist);
 					} else {
+						System.out.println( " ");
 						System.out.println(firstname + " has no friends");
 					}
 
 				} else {
+					System.out.println( " ");
 					System.out.println("Profile doesn't exist");
 				}
 				break;
 
-			case 4:
+			case 4:///// are the profile connected?
 				System.out.println("Enter the first name");
 				firstname1 = menu.readLine();
 
@@ -163,18 +172,20 @@ public class MiniNet {
 
 					if (profile2 != null) {
 						Boolean isConnected = driver.areProfilesConnected(profile, profile2);
-
+						System.out.println( " ");
 						System.out.println(profile.getname() + " and " + profile2.getname() + " are"
 								+ (isConnected ? "" : " not") + " connected");
 					} else {
+						System.out.println( " ");
 						System.out.println("Profile " + firstname2 + " doesn't exist");
 					}
 				} else {
+					
 					System.out.println("Profile " + firstname1 + " doesn't exist");
 				}
 				break;
 
-			case 5:
+			case 5://// Adding a profile to your network
 				System.out.println("Enter your first name");
 				firstname1 = menu.readLine();
 
@@ -216,7 +227,7 @@ public class MiniNet {
 				}
 				break;
 
-			case 6:
+			case 6://// removing a friend from your network
 				System.out.println("Enter your first name");
 				firstname1 = menu.readLine();
 
@@ -247,7 +258,8 @@ public class MiniNet {
 
 				}
 				break;
-			case 7:
+			
+			case 7://// showing one's parent and children
 				System.out.println("Enter the first name");
 				firstname1 = menu.readLine();
 
@@ -270,7 +282,9 @@ public class MiniNet {
 					System.out.println("Profile " + firstname1 + " doesn't exist");
 				}
 				break;
-			case 8:
+			
+			
+			case 8:///// exiting the menu
 				System.out.println("You have exited the program\r\n");
 				return false;
 			default:
